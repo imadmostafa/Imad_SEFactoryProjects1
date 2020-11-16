@@ -39,7 +39,7 @@
             
 
          <div>
-             <h1> Welcome to BLog Web Application , sign in w bala fazlake :)</h1>
+             <h1> Welcome to BLog Web Application </h1>
          </div>
 
                     
