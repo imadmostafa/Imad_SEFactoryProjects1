@@ -23,14 +23,14 @@ public function delete_article($article_id){
 
 
 
-public function article_user()
+public function article_user($user_id)
 {
 
+$article_user =User::where('id', $user_id)->first();
 
-
+return $article_user->name;
 
 }
-
 
 
 

@@ -78,10 +78,14 @@ return redirect('myArticles');
 
 public function article_user(){
     $article_object=new Article();
-    $article_userr=$article_object->article_user();
+    $article_user_id=request('article_id');
+    $article_userr=$article_object->article_user($article_user_id);
+
+    die($article_userr);
 
 
 }
+
 
 
 

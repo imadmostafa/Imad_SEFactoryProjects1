@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Article of  {{$item->user_id}}
+                    <div class="card-header">Article of  {{ App\Models\User::where('id', $item->user_id)->first()->name}}
                                         created at {{$item->created_at}}</div>
 
                     <div class="card-body">
@@ -20,11 +20,14 @@
                     </div>
 
                     <div class="card-body">
-                        Here the likes and comments forms will be
-                        <br>
+                       <hr width="fill" color="green"></hr>
+
                         @foreach ($comments as $comment)
                         @if ( $comment->article_id==$item->id)
-                        {{$comment->body}}
+                        {{ App\Models\User::where('id', $comment->user_id)->first()->name}}:
+
+
+                        {{$comment->body}}&emsp;&emsp;&emsp;&emsp;Date:{{ App\Models\Comments::where('id', $comment->id)->first()->created_at}}
                         <br>
                         @endif
                         @endforeach

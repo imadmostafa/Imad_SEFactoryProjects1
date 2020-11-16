@@ -36,3 +36,9 @@ let button_home=document.getElementById('home');
 button_home.addEventListener('click',function(){
 window.location.replace('/home');
 });
+
+let btn22=document.getElementById('btn2221');
+btn22.addEventListener('click',function(){
+    alert("hello");
+
+});

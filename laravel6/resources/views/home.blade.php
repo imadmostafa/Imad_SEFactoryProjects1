@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <style>
     .card-header{
         color: green
@@ -15,24 +16,61 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Article of  {{$item->user_id}}</div>
+                    <div class="card-header">Article of  {{$item->user_id}}
+                    {{App\Models\User::where('id', $item->user_id)->first()->name}}
+                    </div>
 
-                    <div class="card-body">
+                    <div class="card-body" id={{$item->id}}>
 
 
 
                         {{$item->body}} <br>
 
+
+
+
+
                     </div>
 
-                    <div class="card-body">
-                        <hr></hr>
+                    <div class="card-body" id='comments'>
+                        <hr width="fill" color="green"></hr>
+
+                        @if($likes==null)
+                        <button type="submit">sssss</button>
+                        @endif
 
 
+                        <a href="/like_article/{{$item->id}}" class="like-button" id="btn222{{$item->id}}">
+                            <i class="material-icons is-liked bouncy">favorite</i>
+
+                            <i class="material-icons not-liked bouncy">favorite_border</i>
+                            <span class="like-overlay"></span>
+                        @foreach ($likes as $like)
+
+                        @if ( $like->article_id==$item->id)
+
+
+
+
+
+
+                             {{$like->sumoflikes}}
+
+
+
+
+                        @endif
+                        @endforeach
+                    </a>
+                    <br>
                         @foreach ($comments as $comment)
                         @if ( $comment->article_id==$item->id)
-                        *{{$comment->body}}
-                          FROM {{$comment->user_id}}
+                        <tr>
+                         {{ App\Models\User::where('id', $comment->user_id)->first()->name}}:
+
+
+                        {{$comment->body}}&emsp;&emsp;&emsp;&emsp;Date:{{ App\Models\Comments::where('id', $comment->id)->first()->created_at}}
+                        </tr>
                         <br>
                         @endif
                         @endforeach

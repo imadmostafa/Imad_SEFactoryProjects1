@@ -65818,6 +65818,10 @@ var button_home = document.getElementById('home');
 button_home.addEventListener('click', function () {
   window.location.replace('/home');
 });
+var btn22 = document.getElementById('btn2221');
+btn22.addEventListener('click', function () {
+  alert("hello");
+});
 
 /***/ }),
 
